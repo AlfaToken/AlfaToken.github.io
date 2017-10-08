@@ -149,7 +149,8 @@
                         "totalSupply": $("#total-supply").val(),
                         "decimals": $("#decimals").val(),
                         "price": $("#price").val(),
-                        "minSaleAmount": $("#min-sale-amount").val()
+                        "minSaleAmount": $("#min-sale-amount").val(),
+                        "recaptcha": grecaptcha.getResponse()
                     })
                 }).done(function (data) {
                     window.location.replace(data.repo);
@@ -160,6 +161,6 @@
             });
         });
     </script>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='https://www.google.com/recaptcha/api.js?hl="en"'></script>
   </body>
 </html>
