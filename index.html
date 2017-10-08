@@ -104,7 +104,7 @@
             <p style="color:red" id="error"></p>
 
             <p class="lead">
-              <a href="#" class="btn btn-lg btn btn-light" id="create">Create</a>
+                <a href="#" class="btn btn-lg btn btn-light" id="create">Create</a>
             </p>
           </div>
 
@@ -153,7 +153,7 @@
                         "recaptcha": grecaptcha.getResponse()
                     })
                 }).done(function (data) {
-                    window.location.replace(data.repo);
+                    $(".lead").html('<a href="'+data.repo+'" target="_blank" id="go">Go to your smart-contract repository</a>');
                 }).fail(function(){
                     $("#error").text("An error has occurred. Please try again later.");
                     btn.text("Create").removeClass("disabled");
