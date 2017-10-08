@@ -20,7 +20,7 @@
             background-color: rgba(61, 155, 233, 1);
             text-shadow: 0 0.05rem 0.1rem rgba(0,0,0,0);
         }
-        .btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
+        .btn-light, .btn-light:hover, .btn-light:focus {
             color: rgba(61, 155, 233, 1);
         }
         form{
@@ -28,6 +28,9 @@
         }
         .g-recaptcha>div{
             margin: 0 auto;
+        }
+        .cover{
+            min-height: 580px;
         }
     </style>
   </head>
@@ -101,7 +104,7 @@
             <p style="color:red" id="error"></p>
 
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-secondary" id="create">Create</a>
+              <a href="#" class="btn btn-lg btn btn-light" id="create">Create</a>
             </p>
           </div>
 
@@ -130,8 +133,9 @@
             });
 
             $("#create").on("click", function() {
-                console.log($("#g-recaptcha-response").val());
                 $("#error").text("");
+                var btn = $(this);
+                btn.text("Loading...").addClass("disabled");
 
                 $.ajax({
                     type: "POST",
@@ -151,6 +155,7 @@
                     window.location.replace(data.repo);
                 }).fail(function(){
                     $("#error").text("An error has occurred. Please try again later.");
+                    btn.text("Create").removeClass("disabled");
                 });
             });
         });
