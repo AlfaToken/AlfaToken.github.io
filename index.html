@@ -222,38 +222,44 @@
 
             $("#create").on("click", function(event) {
                 event.preventDefault();
-                
+
                 $("#error").text("");
                 var btn = $(this);
                 btn.text("Loading...").addClass("disabled");
+
+                var data = { 
+                    "name": parseText($("#name").val()),
+                    "symbol" : parseText($("#symbol").val()),
+                    "totalSupply": parseFloat($("#total-supply").val()),
+                    "decimals": parseInt($("#decimals").val()),
+
+                    "startDate": new Date($("#start-date").val()),
+                    "endDate": new Date($("#end-date").val()),
+                    "totalSaleAmount": parseFloat($("#total-sale-amount").val()),
+                    "minTransactionAmount": parseFloat($("#min-transaction-amount").val()),
+                    "price": parseFloat($("#price").val()),
+                    "earlyBonus": parseFloat($("#early-bonus").val()),
+
+                    "issuerName": parseText($("#issuer-name").val()),
+                    "issuerSite": parseText($("#issuer-site").val()),
+                    "issuerEmail" : parseText($("#issuer-email").val()),
+
+                    "contactName": parseText($("#contact-name").val()),
+                    "contactEmail" : parseText($("#contact-email").val()),
+
+                    "referrer": document.referrer,
+                    "recaptcha": grecaptcha.getResponse()
+                };
+
+                console.log(data);
+                console.log(JSON.stringify(data));
 
                 $.ajax({
                     type: "POST",
                     url: "https://app-func.azurewebsites.net/api/MakeToken",
                     dataType: 'json',
                     contentType : 'application/json',
-                    data: JSON.stringify({ 
-                        "name": parseText($("#name").val()),
-                        "symbol" : parseText($("#symbol").val()),
-                        "totalSupply": parseFloat($("#total-supply").val()),
-                        "decimals": parseInt($("#decimals").val()),
-
-                        "startDate": new Date($("#start-date").val()),
-                        "endDate": new Date($("#end-date").val()),
-                        "totalSaleAmount": parseFloat($("#total-sale-amount").val()),
-                        "minTransactionAmount": parseFloat($("#min-transaction-amount").val()),
-                        "price": parseFloat($("#price").val()),
-                        "earlyBonus": parseFloat($("#early-bonus").val()),
-
-                        "issuerName": parseText($("#issuer-name").val()),
-                        "issuerSite": parseText($("#issuer-site").val()),
-                        "issuerEmail" : parseText($("#issuer-email").val()),
-
-                        "contactName": parseText($("#contact-name").val()),
-                        "contactEmail" : parseText($("#contact-email").val()),
-
-                        "recaptcha": grecaptcha.getResponse()
-                    })
+                    data: JSON.stringify(data)
                 }).done(function (data) {
                     $(".lead").html('<a href="'+data.repo+'" target="_blank" id="go">Go to your smart-contract repository</a>');
                 }).fail(function(){
