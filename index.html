@@ -12,6 +12,8 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.min.css" integrity="sha256-pNGG0948CVwfHxxS8lVkUKftaSsMBzFSUknrKr2utfY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous" />
 
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css" rel="stylesheet">
@@ -34,8 +36,9 @@
             margin: 0 auto;
         }
         .cover{
-            min-height: 580px;
-            margin-top: 40px;
+            min-height: 900px;
+            margin-top: 100px;
+            margin-bottom: 100px;
         }
     </style>
   </head>
@@ -59,27 +62,68 @@
 
           <div class="inner cover">
             <h1 class="cover-heading">Creating token is easy.</h1>
-            <p class="lead">Fill out the form below with the information and you will get a link to the GitHub repository that contains the source code of your smart contract.</p>
+            <p class="lead">Fill in the form below and you will get a link to the GitHub repository that contains the source code of your Pre-ICO smart contract.</p>
             
             <form>
+                <h5>Token information</h4>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="form-control-label" for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="AlfaToken">
+                        <input type="text" class="form-control" id="name" placeholder="My Token">
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-control-label" for="symbol">Symbol:</label>
-                        <input type="text" class="form-control" id="symbol" placeholder="ALFA">
+                        <input type="text" class="form-control" id="symbol" placeholder="MYT">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label class="form-control-label" for="total-supply">Total Supply:</label>
-                        <input type="text" class="form-control" id="total-supply" placeholder="100000000">
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon display-symbol">MYT</div>
+                            <input type="text" class="form-control" id="total-supply" placeholder="1000000000">
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-control-label" for="decimals">Decimals:</label>
-                        <input type="text" class="form-control" id="decimals" placeholder="18">
+                        <input type="text" class="form-control" id="decimals" placeholder="8">
+                    </div>
+                </div>
+                <h5>Pre-ICO information</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="start-date">Sele Start Date:</label>
+                        <div class='input-group date datetimepicker'>
+                            <span class="input-group-addon">
+                                <span class="octicon octicon-calendar"></span>
+                            </span>
+                            <input type='text' class="form-control" id="start-date" placeholder="" />                                
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="end-date">Sele Finish Date:</label>
+                        <div class='input-group date datetimepicker'>
+                            <span class="input-group-addon">
+                                <span class="octicon octicon-calendar"></span>
+                            </span>
+                            <input type='text' class="form-control" id="end-date" placeholder="" />                                
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="total-sale-amount">Total Sale Amount:</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon display-symbol">MYT</div>
+                            <input type="text" class="form-control" id="total-sale-amount" placeholder="200000000">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="min-transaction-amount">Min Transaction Amount:</label>
+                        <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon display-symbol">MYT</div>
+                            <input type="text" class="form-control" id="min-transaction-amount" placeholder="50">
+                        </div>
                     </div>
                 </div>
                 <div class="form-row">
@@ -91,11 +135,39 @@
                         </div>
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="form-control-label" for="min-sale-amount">Min Sale Amount:</label>
+                        <label class="form-control-label" for="early-bonus">Early bonus:</label>
                         <div class="input-group mb-2 mb-sm-0">
-                            <div class="input-group-addon" id="display-symbol">ALFA</div>
-                            <input type="text" class="form-control" id="min-sale-amount" placeholder="50">
+                            <div class="input-group-addon">%</div>
+                            <input type="text" class="form-control" id="early-bonus" placeholder="30">
                         </div>
+                    </div>
+                </div>
+                <h5>Issuer information</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label class="form-control-label" for="issuer-name">Organization display name:</label>
+                        <input type="text" class="form-control" id="issuer-name" placeholder="The My Token DAO">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="issuer-site">Site URL:</label>
+                        <input type="text" class="form-control" id="issuer-site" placeholder="mytoken.io">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="issuer-email">Contact e-mail:</label>
+                        <input type="text" class="form-control" id="issuer-email" placeholder="info@mytoken.io">
+                    </div>
+                </div>
+                <h5>Сontact information (will not be public)</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="contact-name">Name:</label>
+                        <input type="text" class="form-control" id="contact-name" placeholder="">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="contact-email">Phone or personal e-mail:</label>
+                        <input type="text" class="form-control" id="contact-email" placeholder="">
                     </div>
                 </div>
                 <div class="form-row">
@@ -130,13 +202,27 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js" integrity="sha256-GSRe5cHmmTD3DgBxRifzkNLaW1iwPTzt9kJ86rGa8tg=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js?hl="en"'></script>
+        
     <script>
-        $(function(){
-            $("#symbol").on("change", function() {
-                $("#display-symbol").text($(this).val());
+        $(function(){            
+            $('.datetimepicker').datetimepicker({
+                    format: 'DD MMM YY'
             });
 
-            $("#create").on("click", function() {
+            $("#symbol").on("change", function() {
+                $(".display-symbol").text($(this).val());
+            });
+
+            var parseText = function(text){
+                return text == "" ? null : text;
+            }
+
+            $("#create").on("click", function(event) {
+                event.preventDefault();
+                
                 $("#error").text("");
                 var btn = $(this);
                 btn.text("Loading...").addClass("disabled");
@@ -147,13 +233,25 @@
                     dataType: 'json',
                     contentType : 'application/json',
                     data: JSON.stringify({ 
-                        "name": $("#name").val(),
-                        "contarct": "ICO",
-                        "symbol" : $("#symbol").val(),
-                        "totalSupply": $("#total-supply").val(),
-                        "decimals": $("#decimals").val(),
-                        "price": $("#price").val(),
-                        "minSaleAmount": $("#min-sale-amount").val(),
+                        "name": parseText($("#name").val()),
+                        "symbol" : parseText($("#symbol").val()),
+                        "totalSupply": parseFloat($("#total-supply").val()),
+                        "decimals": parseInt($("#decimals").val()),
+
+                        "startDate": new Date($("#start-date").val()),
+                        "endDate": new Date($("#end-date").val()),
+                        "totalSaleAmount": parseFloat($("#total-sale-amount").val()),
+                        "minTransactionAmount": parseFloat($("#min-transaction-amount").val()),
+                        "price": parseFloat($("#price").val()),
+                        "earlyBonus": parseFloat($("#early-bonus").val()),
+
+                        "issuerName": parseText($("#issuer-name").val()),
+                        "issuerSite": parseText($("#issuer-site").val()),
+                        "issuerEmail" : parseText($("#issuer-email").val()),
+
+                        "contactName": parseText($("#contact-name").val()),
+                        "contactEmail" : parseText($("#contact-email").val()),
+
                         "recaptcha": grecaptcha.getResponse()
                     })
                 }).done(function (data) {
@@ -185,6 +283,5 @@
             $(window).resize(f);
         });
     </script>
-    <script src='https://www.google.com/recaptcha/api.js?hl="en"'></script>
   </body>
 </html>
